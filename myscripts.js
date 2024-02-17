@@ -3,6 +3,8 @@ let playChoice;
 let score;
 let player=0;
 let cpu=0;
+let playerSelection;
+let computerSelection;
 function getComputerChoice(){
    cpuChoice = Math.floor(Math.random() * 3)+1;
     switch(cpuChoice){
@@ -12,14 +14,35 @@ function getComputerChoice(){
     }
     return cpuChoice;
 }
-function getPlayerChoice(playChoice){
-    playChoice = prompt("Enter your decision Rock, Paper, Scissors: ","");
-    return playChoice.toLowerCase();
-}
+function getPlayerChoice(){
+    const btn = document.querySelector('#btn');
+    btn.addEventListener('click',(event)=>{
+        let target = event.target;
+        switch(target.id){
+            case 'rock':
+                playChoice="rock";
+                console.log(playChoice);
+                break;
+            case 'paper':
+                playChoice="paper";
+                console.log(playChoice);
+                break;
+            case 'scissors':
+                playChoice="scissors";
+                console.log(playChoice);
+                break;
+              
+        }
+        battleStart();
+     
+        
+     });
 
-function battleStart(playerSelection, computerSelection){
+
+}
+function battleStart(){
     computerSelection=  getComputerChoice(cpuChoice);
-    playerSelection = getPlayerChoice(playChoice);
+    playerSelection = playChoice;
     if(playerSelection==computerSelection){
         console.log("Player: "+playerSelection+" Cpu: "+computerSelection+"\nIts a draw!");
     }
@@ -40,7 +63,7 @@ function battleStart(playerSelection, computerSelection){
     else if(playerSelection=="scissors"&&computerSelection=="paper"){
     console.log("Player: "+playerSelection+" Cpu: "+computerSelection+"\nYou Win!");player++;
 }}
-function playGame(){
+/*function playGame(){
     for (i=0;i<5;i++){
         battleStart();
     console.log(`Score Player: ${player} Score Cpu: ${cpu}`);
@@ -54,7 +77,6 @@ function playGame(){
     else{
         console.log(`Its a draw!`);
     }
-}
-let playerSelection;
-let computerSelection;
-playGame();
+}*/
+
+    getPlayerChoice();
