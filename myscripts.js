@@ -21,30 +21,27 @@ function getPlayerChoice(){
         switch(target.id){
             case 'rock':
                 playChoice="rock";
-                console.log(playChoice);
+                console.log(`You Choosed ${playChoice}`);
                 break;
             case 'paper':
                 playChoice="paper";
-                console.log(playChoice);
+                console.log(`You Choosed ${playChoice}`);
                 break;
             case 'scissors':
                 playChoice="scissors";
-                console.log(playChoice);
+                console.log(`You Choosed ${playChoice}`);
                 break;
               
         }
         battleStart();
-     
-        
+        scoreBoard();
      });
-
-
 }
 function battleStart(){
     computerSelection=  getComputerChoice(cpuChoice);
     playerSelection = playChoice;
     if(playerSelection==computerSelection){
-        console.log("Player: "+playerSelection+" Cpu: "+computerSelection+"\nIts a draw!");
+        console.log("Player: "+playerSelection+" Cpu: "+computerSelection+"\n Its a Draw!");
     }
     else if(playerSelection=="rock"&&computerSelection=="paper"){
         console.log("Player: "+playerSelection+" Cpu: "+computerSelection+"\nYou lose!"); cpu++;
@@ -63,20 +60,19 @@ function battleStart(){
     else if(playerSelection=="scissors"&&computerSelection=="paper"){
     console.log("Player: "+playerSelection+" Cpu: "+computerSelection+"\nYou Win!");player++;
 }}
-/*function playGame(){
-    for (i=0;i<5;i++){
-        battleStart();
+function scoreBoard(){
+   
     console.log(`Score Player: ${player} Score Cpu: ${cpu}`);
-    }
-    if(player>cpu){
+    if(player==5){
         console.log(`You win! congrats`);
+        console.log = function() {};
     }
-    else if(player<cpu){
+    else if(cpu==5){
         console.log(`You lose! better luck next time`);
+        console.log = function() {};
+        
     }
-    else{
-        console.log(`Its a draw!`);
-    }
-}*/
 
-    getPlayerChoice();
+}
+
+ getPlayerChoice();
